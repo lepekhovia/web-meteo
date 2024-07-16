@@ -4,11 +4,6 @@ __pycache__
 db.sqlite3
 media/
 
-# Docker
-.dockerignore
-Dockerfile
-docker-compose.yml
-
 # Virtual environment
 venv/
 .env
@@ -32,3 +27,6 @@ __pycache__/
 
 # Ignore local settings
 local_settings.py
+
+.meteorc
+static/
