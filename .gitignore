@@ -1,0 +1,34 @@
+# Django
+*.pyc
+__pycache__
+db.sqlite3
+media/
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Virtual environment
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Compiled Python files
+*.pyc
+
+# macOS
+.DS_Store
+
+# Compiled Python files
+__pycache__/
+
+# Ignore local settings
+local_settings.py
