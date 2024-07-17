@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
-    'core'
+    'core',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -88,3 +89,6 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GET_FORECAST_API = 'https://api.open-meteo.com/v1/forecast'
+GEOCODING_API = 'https://geocoding-api.open-meteo.com/v1/search'
