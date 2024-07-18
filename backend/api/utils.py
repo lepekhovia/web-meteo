@@ -3,22 +3,17 @@ import requests
 from config.settings import GET_FORECAST_API, GEOCODING_API
 
 
-def get_weather_forecast(city, language='en'):
-    geo_url = f'{GEOCODING_API}'
-    geo_params  = {
-        'name': city,
-        'lang': language,
-        }
-    response_geo = requests.get(geo_url)
-    print(response_geo)
+def get_weather_forecast(town, language='ru'):
 
-    weather_params = {
+    params = {"name": town, "language": language}
+    geo_responses = requests.get(GEOCODING_API, params=params)
+    geo_responses = geo_responses.json()
 
-        }
-    response_weather = requests.get(GET_FORECAST_API, params=weather_params)
-
-    if response_weather.status_code == 200:
-        weather_data = response_weather.json()
-        return weather_data
-    else:
-        return None
+    weather_forecast = {}
+    for response in geo_responses['results']:
+        params = {"latitude": response['latitude'], "longitude": response['longitude'], "hourly": "temperature_2m"}
+        weather = requests.get(GET_FORECAST_API, params=params)
+        weather = weather.json()
+        weather_forecast['time'] = weather['hourly']['time'][::3]
+        weather_forecast['temperature_2m'] = weather['hourly']['temperature_2m'][::3]
+    return weather_forecast

@@ -9,7 +9,9 @@ class User(models.Model):
     objects = models.Manager()
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True, verbose_name=_('Unique user ID'))
+    cookie_token = models.CharField(editable=False, verbose_name=_('Cookie key'), unique=True)
     town = models.CharField(max_length=100, verbose_name=_('Last city requested by user'))
+    locale = models.CharField(max_length=10, verbose_name=_('User locale'))
 
     class Meta:
         verbose_name = _('User')

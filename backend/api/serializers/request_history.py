@@ -6,4 +6,4 @@ from core.models.request_history import RequestHistory
 class RequestHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = RequestHistory
-        fields = '__all__'
+        fields = ['town']
